@@ -1,0 +1,20 @@
+<table style="width:100%">
+  <tr>
+    <th>Title</th>
+    <th>Rating</th>
+    <th>Length</th>
+    <th>Lead Actor</th>
+    <th>Available for Checkout?</th>
+  </tr>
+
+  <% @attractions.each do |attraction| %>
+    <tr>
+      <td><%= link_to movie.title, movie_path(movie.id) %></td>
+      <td><%= movie.rating %></td>
+      <td><%= movie.length %></td>
+      <td><%= movie.lead_actor %></td>
+      <td><%= movie.available %></td>
+    </tr>
+  <% end %>
+
+</table>

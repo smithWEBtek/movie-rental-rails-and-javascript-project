@@ -10,7 +10,7 @@ DATA = {
     ["Tenzing Norgay Trainor", 18, 250, "password"],
     ["Davis Cleveland", 21, 80, "password"],
     ["Cole Sand", 16, 20, "password"],
-    ["Quvenzhané Wallis", 5, 50, "password"]
+    ["Quvenzhané Wallis", 5, 50, "password"],
     ["Baby Holly", 1, 0, "password"]
   ],
   :movie_keys =>
@@ -54,7 +54,7 @@ def make_movies
     rand(1..8).times do
       people = []
       Customer.all.each {|u| people << u }
-      new_movie.users << people[rand(0...people.length)]
+      new_movie.customers << people[rand(0...people.length)]
     end
     new_movie.customers.each {|c| c.save}
     new_movie.save
