@@ -14,18 +14,18 @@ DATA = {
     ["Baby Holly", 1, 0, "password"]
   ],
   :movie_keys =>
-   ["title", "rating", "length", "lead_actor", "available", "customer_id"],
+   ["title", "rating", "length", "lead_actor"],
   :movies => [
-    ["Raiders of the Lost Arc", "PG", 115, "Harrison Ford", true, nil],
-    ["Matrix", "R", 93, "Mike Myers", true, nil],
-    ["Shrek", "PG", 150, "Keanu Reeves", true, nil],
-    ["Finding Nemo", "G", 101, "Albert Brooks", true, nil],
-    ["Mean Girls", "PG-13", 97, "Lindsay Lohan", true, nil],
-    ["Blue is the Warmest Color", "NC-17", 187, "Lea Seydoux", true, nil],
-    ["Interstellar", "PG-13", 169, "Matthew McConaughey", true, nil],
-    ["Toy Story", "G", 81, "Tom Hanks", true, nil],
-    ["Deadpool", "R", 109, "Ryan Reynolds", true, nil],
-    ["The Godfather", "R", 178, "Al Pacino", true, nil],
+    ["Raiders of the Lost Arc", "PG", 115, "Harrison Ford"],
+    ["Matrix", "R", 93, "Mike Myers"],
+    ["Shrek", "PG", 150, "Keanu Reeves"],
+    ["Finding Nemo", "G", 101, "Albert Brooks"],
+    ["Mean Girls", "PG-13", 97, "Lindsay Lohan"],
+    ["Blue is the Warmest Color", "NC-17", 187, "Lea Seydoux"],
+    ["Interstellar", "PG-13", 169, "Matthew McConaughey"],
+    ["Toy Story", "G", 81, "Tom Hanks"],
+    ["Deadpool", "R", 109, "Ryan Reynolds"],
+    ["The Godfather", "R", 178, "Al Pacino"],
 
   ],
 }

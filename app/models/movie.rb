@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
-  belongs_to :customer
-
+  has_many :rentals
+  has_many :customers, through: :rentals
+  has_many :famous_quotes
 end

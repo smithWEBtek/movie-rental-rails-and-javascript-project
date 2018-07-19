@@ -1,5 +1,7 @@
 class Customer < ApplicationRecord
-  has_many :movies
+  has_many :rentals
+  has_many :movies, through: :rentals
+
   has_secure_password
 
 end

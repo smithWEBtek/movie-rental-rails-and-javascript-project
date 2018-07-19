@@ -1,0 +1,2 @@
+class FamousQuotesController < ApplicationController
+end
