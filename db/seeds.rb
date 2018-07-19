@@ -1,71 +1,63 @@
 DATA = {
   :customer_keys =>
-    ["name", "age", "money", "tickets", "height", "password"],
+    ["name", "age", "money", "password"],
   :customers => [
-    ["Max Charles", 0, 3, 6, 32, "password"],
-    ["Skai Jackson", 1, 3, 10, 60, "password"],
-    ["Kaleo Elam", 1, 2, 15, 59, "password"],
-    ["Megan Charpentier", 3, 1, 12, 60, "password"],
-    ["Hayden Byerly", 1, 1, 16, 58, "password"],
-    ["Tenzing Norgay Trainor", 0, 1, 10, 55, "password"],
-    ["Davis Cleveland", 1, 3, 5, 36, "password"],
-    ["Cole Sand", 2, 2, 7, 34, "password"],
-    ["Quvenzhané Wallis", 2, 2, 13, 30, "password"]
+    ["Max Charles", 99, 50, "password"],
+    ["Skai Jackson", 11, 10, "password"],
+    ["Kaleo Elam", 45, 350, "password"],
+    ["Megan Charpentier", 32, 2, "password"],
+    ["Hayden Byerly", 17, 75, "password"],
+    ["Tenzing Norgay Trainor", 18, 250, "password"],
+    ["Davis Cleveland", 21, 80, "password"],
+    ["Cole Sand", 16, 20, "password"],
+    ["Quvenzhané Wallis", 5, 50, "password"]
+    ["Baby Holly", 1, 0, "password"]
   ],
-  :attraction_keys =>
-   ["name", "nausea_rating", "happiness_rating", "tickets", "min_height"],
-  :attractions => [
-    ["Scrambler Ride", 2, 2, 2, 36],
-    ["Miniature Railroad", 0, 1, 2, 32],
-    ["Merry-Go-Round", 1, 1, 1, 30],
-    ["Roller Coaster", 1, 3, 4, 54],
-    ["Swinging Ship", 2, 2, 2, 36],
-    ["Go Karts", 1, 2, 3, 36],
-    ["Haunted Mansion", 1, 1, 1, 30],
-    ["Ferris Wheel", 1, 1, 2, 36],
-    ["Teacups Ride", 3, 1, 1, 28]
+  :movie_keys =>
+   ["title", "rating", "length", "lead_actor", "available", "customer_id"],
+  :movies => [
+    ["Raiders of the Lost Arc", "PG", 115, "Harrison Ford", true, nil],
+    ["Matrix", "R", 93, "Mike Myers", true, nil],
+    ["Shrek", "PG", 150, "Keanu Reeves", true, nil],
+    ["Finding Nemo", "G", 101, "Albert Brooks", true, nil],
+    ["Mean Girls", "PG-13", 97, "Lindsay Lohan", true, nil],
+    ["Blue is the Warmest Color", "NC-17", 187, "Lea Seydoux", true, nil],
+    ["Interstellar", "PG-13", 169, "Matthew McConaughey", true, nil],
+    ["Toy Story", "G", 81, "Tom Hanks", true, nil],
+    ["Deadpool", "R", 109, "Ryan Reynolds", true, nil],
+    ["The Godfather", "R", 178, "Al Pacino", true, nil],
+
   ],
-  :admins => [
-    "Mary Elitch Long",
-    "John Elitch"
-  ]
 }
 
 def main
-  make_users
-  make_admin
-  make_attractions_and_rides
+  make_customers
+  make_movies
 end
 
-def make_users
-  DATA[:users].each do |user|
-    new_user = User.new
-    user.each_with_index do |attribute, i|
-      new_user.send(DATA[:user_keys][i]+"=", attribute)
+def make_customers
+  DATA[:customers].each do |customer|
+    new_customer = Customer.new
+    customer.each_with_index do |attribute, i|
+      new_customer.send(DATA[:customer_keys][i]+"=", attribute)
     end
-    new_user.save
+    new_customer.save
   end
 end
 
-def make_admin
-  DATA[:admins].each do |name|
-    User.create(name: name, admin: true, password: 'password')
-  end
-end
-
-def make_attractions_and_rides
-  DATA[:attractions].each do |attraction|
-    new_attraction = Attraction.new
-    attraction.each_with_index do |attribute, i|
-      new_attraction.send(DATA[:attraction_keys][i] + "=", attribute)
+def make_movies
+  DATA[:movies].each do |movie|
+    new_movie = Movie.new
+    movie.each_with_index do |attribute, i|
+      new_movie.send(DATA[:movie_keys][i] + "=", attribute)
     end
     rand(1..8).times do
-      customers = []
-      User.all.each {|u| customers << u if u.admin != true}
-      new_attraction.users << customers[rand(0...customers.length)]
+      people = []
+      Customer.all.each {|u| people << u }
+      new_movie.users << people[rand(0...people.length)]
     end
-    new_attraction.users.each {|c| c.save}
-    new_attraction.save
+    new_movie.customers.each {|c| c.save}
+    new_movie.save
   end
 end
 
