@@ -51,12 +51,6 @@ def make_movies
     movie.each_with_index do |attribute, i|
       new_movie.send(DATA[:movie_keys][i] + "=", attribute)
     end
-    rand(1..8).times do
-      people = []
-      Customer.all.each {|u| people << u }
-      new_movie.customers << people[rand(0...people.length)]
-    end
-    new_movie.customers.each {|c| c.save}
     new_movie.save
   end
 end

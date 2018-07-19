@@ -1,4 +1,4 @@
-<table style="width:100%">
+<table>
   <tr>
     <th>Title</th>
     <th>Rating</th>
@@ -7,7 +7,7 @@
     <th>Available for Checkout?</th>
   </tr>
 
-  <% @attractions.each do |attraction| %>
+  <% @movies.each do |movie| %>
     <tr>
       <td><%= link_to movie.title, movie_path(movie.id) %></td>
       <td><%= movie.rating %></td>
