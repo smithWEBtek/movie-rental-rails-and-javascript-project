@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :rentals
   resources :movies
   resources :customers
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/auth/facebook/callback' => 'sessions#facebook_create'
+
 end
