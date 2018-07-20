@@ -4,6 +4,14 @@ Rails.application.routes.draw do
   resources :rentals
   resources :movies
   resources :customers
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
   get '/auth/facebook/callback' => 'sessions#facebook_create'
+
+  get '/logout' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
 
 end
