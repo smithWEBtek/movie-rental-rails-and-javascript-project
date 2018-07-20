@@ -17,5 +17,10 @@ class CustomersController < ApplicationController
     end
   end
 
+  private
+
+  def customer_params
+    params.require(:customer).permit(:name, :age, :money, :password)
+  end
 
 end
