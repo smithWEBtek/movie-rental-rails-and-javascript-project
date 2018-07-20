@@ -1,0 +1,10 @@
+<h1><%= @movie.title %></h1>
+
+<p><strong>MPAA Rating: </strong><%= @movie.rating %> </p>
+<p><strong>Length: </strong><%= @movie.length %> minutes</p>
+<p><strong>Lead Actor: </strong><%= @movie.lead_actor %> </p>
+
+<h2>Famous Quotes</h2>
+<% @movie.famous_quotes.each do |q| %>
+  <p>"<em><%= q.quote %></em>" -<%= q.actor %></p> <br />
+<% end  %>
