@@ -9,8 +9,9 @@ class SessionsController < ApplicationController
       @customer = Customer.find_or_create_by(email: auth['email']) do |c|
         c.name = auth['info']['name']
         c.email = auth['info']['email']
+        c.password = "0"
       end
-      
+
       @customer.save
       session[:customer_id] = @customer.id
       redirect_to '/'
