@@ -14,7 +14,24 @@ class SessionsController < ApplicationController
       redirect_to '/login'
     end
   end
-  
+
+  def facebook_create
+    @customer = Customer.find_or_create_by(uid: auth['uid']) do |c|
+      c.name = auth['info']['name']
+      c.age = auth['info']['age']
+    end
+
+    session[:customer_id] = @customer.id
+
+    render 'application/home'
+  end
+
+  private
+
+  def auth
+    request.env['omniauth.auth']
+  end
+
   def destroy
     session.delete :customer_id
     redirect_to '/'
