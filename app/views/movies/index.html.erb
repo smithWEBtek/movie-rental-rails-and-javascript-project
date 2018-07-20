@@ -4,16 +4,14 @@
     <th>Rating</th>
     <th>Length</th>
     <th>Lead Actor</th>
-    <th>Available for Checkout?</th>
   </tr>
 
   <% @movies.each do |movie| %>
     <tr>
       <td><%= link_to movie.title, movie_path(movie.id) %></td>
       <td><%= movie.rating %></td>
-      <td><%= movie.length %></td>
+      <td><%= movie.length %> minutes</td>
       <td><%= movie.lead_actor %></td>
-      <td>add me in later!</td>
     </tr>
   <% end %>
 
