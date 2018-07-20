@@ -6,12 +6,12 @@ class SessionsController < ApplicationController
 
   def create
     if request.env['omniauth.auth']
-      @customer = Customer.find_or_create_by(uid: auth['uid']) do |c|
+      @customer = Customer.find_or_create_by(name: auth['name']) do |c|
         c.name = auth['info']['name']
-        c.age = auth['info']['age']
+      #  c.age = auth['info']['age']
       end
       session[:customer_id] = @customer.id
-      render 'application/home'
+      redirect_to '/'
     else
       @customer = Customer.find_by(id: params[:customer][:id])
 
