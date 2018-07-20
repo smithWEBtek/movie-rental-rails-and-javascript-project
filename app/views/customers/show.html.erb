@@ -1,0 +1,21 @@
+<h1><%= @customer.name %>'s Profile Page </h1>
+
+<p>Email: <%= @customer.email %></p>
+<p>Age: <%= @customer.age %></p>
+
+<% mpaa_statement = "According the the Motion Picture Association of America (MPAA),
+you are old enough to see movies with a rating of " %>
+
+<% under_thirteen = "G."%>
+
+<% thirteen_to_seventeen = "G, PG, or PG-13." %>
+
+<% eighteen_and_over = "G, PG, PG-13, R, or NC-17." %>
+
+<% if @customer.age < 13 %>
+  <p><%= mpaa_statement + under_thirteen %><p>
+<% elsif @customer.age <= 17 %>
+  <p><%= mpaa_statement + thirteen_to_seventeen %></p>
+<% else %>
+  <p><%= mpaa_statement + eighteen_and_over %></p>
+<% end  %>
