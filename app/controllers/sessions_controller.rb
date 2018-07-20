@@ -5,25 +5,23 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @customer = Customer.find_by(id: params[:customer][:id])
-
-    if @customer && @customer.authenticate(params[:customer][:password])
+    if request.env['omniauth.auth']
+      @customer = Customer.find_or_create_by(uid: auth['uid']) do |c|
+        c.name = auth['info']['name']
+        c.age = auth['info']['age']
+      end
       session[:customer_id] = @customer.id
-      redirect_to customer_path(@customer)
+      render 'application/home'
     else
-      redirect_to '/login'
+      @customer = Customer.find_by(id: params[:customer][:id])
+
+      if @customer && @customer.authenticate(params[:customer][:password])
+        session[:customer_id] = @customer.id
+        redirect_to customer_path(@customer)
+      else
+        redirect_to '/login'
+      end
     end
-  end
-
-  def facebook_create
-    @customer = Customer.find_or_create_by(uid: auth['uid']) do |c|
-      c.name = auth['info']['name']
-      c.age = auth['info']['age']
-    end
-
-    session[:customer_id] = @customer.id
-
-    render 'application/home'
   end
 
   private
