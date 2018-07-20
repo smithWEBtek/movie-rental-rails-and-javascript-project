@@ -23,15 +23,15 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    session.delete :customer_id
+    redirect_to '/'
+  end
+
   private
 
   def auth
     request.env['omniauth.auth']
-  end
-
-  def destroy
-    session.delete :customer_id
-    redirect_to '/'
   end
 
 end
