@@ -10,6 +10,7 @@ you are old enough to see movies with a rating of " %>
 <% thirteen_to_seventeen = "G, PG, and PG-13." %>
 <% eighteen_and_over = "G, PG, PG-13, R, and NC-17." %>
 
+<div style="width:50%">
 <% if @customer.age %>
   <% if @customer.age < 13 %>
     <p><%= mpaa_statement + under_thirteen %><p>
@@ -24,3 +25,8 @@ you are old enough to see movies with a rating of " %>
     about which movies would suit you, be sure to include your age
     in your profile.</p>
 <% end  %>
+</div>
+
+<h2> Movies I've Rented </h2>
+
+<h2> Quotes I've Heard </h2>
