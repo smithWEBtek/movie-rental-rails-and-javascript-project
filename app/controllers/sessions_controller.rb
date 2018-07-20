@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
         c.name = auth['info']['name']
         c.email = auth['info']['email']
       end
-
+      
+      @customer.save
       session[:customer_id] = @customer.id
       redirect_to '/'
     else
