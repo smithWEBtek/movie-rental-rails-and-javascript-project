@@ -7,6 +7,7 @@ gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'bootstrap-sass', '3.3.7'
 gem 'bcrypt'
 gem 'pry'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
