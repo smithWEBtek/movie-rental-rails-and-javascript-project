@@ -1,17 +1,17 @@
 DATA = {
   :customer_keys =>
-    ["name", "age", "money", "password"],
+    ["name", "age", "email", "password"],
   :customers => [
-    ["Max Charles", 99, 50, "password"],
-    ["Skai Jackson", 11, 10, "password"],
-    ["Kaleo Elam", 45, 350, "password"],
-    ["Megan Charpentier", 32, 2, "password"],
-    ["Hayden Byerly", 17, 75, "password"],
-    ["Tenzing Norgay Trainor", 18, 250, "password"],
-    ["Davis Cleveland", 21, 80, "password"],
-    ["Cole Sand", 16, 20, "password"],
-    ["Quvenzhané Wallis", 5, 50, "password"],
-    ["Baby Holly", 1, 0, "password"]
+    ["Max Charles", 99, "mcharles@gmail.com", "password"],
+    ["Skai Jackson", 11, "sjackson@yahoo.com", "password"],
+    ["Kaleo Elam", 45, "kelam@princeton.edu", "password"],
+    ["Megan Charpentier", 32, "mcharp@hotmail.com", "password"],
+    ["Hayden Byerly", 17, "hbyerly@yahoo.com", "password"],
+    ["Tenzing Norgay Trainor", 18, "ttrainor@gmail.com", "password"],
+    ["Davis Cleveland", 21, "dcleveland@gmail.com", "password"],
+    ["Cole Sand", 16, "csand@gmail.com", "password"],
+    ["Quvenzhané Wallis", 5, "qwallis@yahoo.com", "password"],
+    ["Baby Holly", 1, "babyholly@gmail.com", "password"]
   ],
 
   :movie_keys =>
