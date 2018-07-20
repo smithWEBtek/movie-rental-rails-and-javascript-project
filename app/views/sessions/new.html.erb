@@ -1,15 +1,16 @@
 <h1>Please Log In</h1>
 <%= form_for @customer, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
 
-  <%= f.label :name, "Your name:" %>
+  <%= f.label :name, "Name:" %>
   <%= f.text_field :name %>
   <br></br>
 
-  <%= f.label :password, "Your password:" %> <br>
+  <%= f.label :password, "Password:" %>
   <%= f.text_field :password %>
   <br></br>
 
   <input type=submit value='Log In'>
 <% end %>
 
-<%= link_to('Or, log in with Facebook', '/auth/facebook') %>
+<br></br>
+<p>Alternatively, <%= link_to('log in with Facebook', '/auth/facebook') %></p>
