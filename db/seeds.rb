@@ -33,7 +33,7 @@ DATA = {
    ["quote", "actor", "movie_id"],
   :famous_quotes => [
     ["Snakes. Why'd it have to be snakes?", "Harrison Ford", 1 ],
-    ["Why oh why,didn't I take the blue pill?", "Joe Pantoliano", 2],
+    ["Why oh why, didn't I take the blue pill?", "Joe Pantoliano", 2],
     ["Onions have layers. Ogres have layers.", "Mike Myers", 3],
     ["Just keep swimming! Just keep swimming!", "Ellen DeGeneres", 4],
     ["I'm sorry that people are so jealous of me. But I can't help it that I'm popular.", "Lacey Chabert", 5],
