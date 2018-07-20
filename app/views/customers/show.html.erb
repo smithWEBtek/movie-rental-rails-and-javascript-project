@@ -8,9 +8,9 @@ you are old enough to see movies with a rating of " %>
 
 <% under_thirteen = "G."%>
 
-<% thirteen_to_seventeen = "G, PG, or PG-13." %>
+<% thirteen_to_seventeen = "G, PG, and PG-13." %>
 
-<% eighteen_and_over = "G, PG, PG-13, R, or NC-17." %>
+<% eighteen_and_over = "G, PG, PG-13, R, and NC-17." %>
 
 <% if @customer.age < 13 %>
   <p><%= mpaa_statement + under_thirteen %><p>
