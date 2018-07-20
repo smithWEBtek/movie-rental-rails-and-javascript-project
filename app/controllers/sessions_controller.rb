@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       session[:customer_id] = @customer.id
       redirect_to '/'
     else
-      @customer = Customer.find_by(id: params[:customer][:id])
+      @customer = Customer.find_by(email: params[:customer][:email])
 
       if @customer && @customer.authenticate(params[:customer][:password])
         session[:customer_id] = @customer.id
