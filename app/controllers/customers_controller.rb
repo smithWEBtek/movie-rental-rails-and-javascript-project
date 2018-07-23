@@ -20,6 +20,20 @@ class CustomersController < ApplicationController
     end
   end
 
+  def edit
+    @customer = Customer.find(params[:id])
+  end
+
+  def update
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      redirect_to customer_path(@customer)
+    else
+      render :edit
+    end
+  end
+
+
   def require_login
     redirect_to '/' unless logged_in?
   end
@@ -27,7 +41,7 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :age, :money, :password)
+    params.require(:customer).permit(:name, :age, :email, :password)
   end
 
 end

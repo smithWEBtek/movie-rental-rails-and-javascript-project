@@ -2,6 +2,7 @@
 
 <p>Email: <%= @customer.email %></p>
 <p>Age: <%= @customer.age %></p>
+<p><%= link_to "Edit your profile", edit_customer_path(@customer.id) %></p>
 
 <% mpaa_statement = "According the the Motion Picture Association of America (MPAA),
 you are old enough to see movies with a rating of " %>
