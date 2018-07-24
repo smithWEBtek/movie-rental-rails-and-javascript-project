@@ -1,5 +1,5 @@
-<h1>Add a Famous Quote from <%= @famous_quote.movie.title %></h1>
-<%= form_for(@famous_quote) do |f| %>
+<h1>Add a Famous Quote from <%= @movie.title %></h1>
+<%= form_for(@famous_quotes) do |f| %>
 
   <%= f.label :quote, "Quote:" %> <br>
   <%= f.text_area_tag :quote %>

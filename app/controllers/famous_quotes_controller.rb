@@ -1,6 +1,7 @@
 class FamousQuotesController < ApplicationController
 
   def new
+    @movie = Movie.find_by(id: params[:movie_id])
     @famous_quote = FamousQuote.new
   end
 
