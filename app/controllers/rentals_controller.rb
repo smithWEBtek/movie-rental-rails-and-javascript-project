@@ -22,4 +22,10 @@ class RentalsController < ApplicationController
     redirect_to customer_rentals_path(@rental.customer, :message => @message)
   end
 
+  def edit
+    @rental = Rental.find_by(id: params[:rental_id])
+    @rental.update(:status => "returned")
+    @rental.save
+  end
+
 end
