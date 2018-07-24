@@ -35,6 +35,7 @@
             <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
             <%= tag(:input, :type => "hidden", :name => :customer_id, :value => current_user.id) %>
             <%= tag(:input, :type => "hidden", :name => :movie_id, :value => rental.movie.id) %>
+            <%= tag(:input, :type => "hidden", :name => :rental_id, :value => rental.id) %>
             <input type="submit" value="Return Now">
           </form>
         </td>
@@ -42,6 +43,7 @@
     <% end %>
 
   </table>
+<br></br>
 
 <h3>Past Rentals:</h3>
 <table>
