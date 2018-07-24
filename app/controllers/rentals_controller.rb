@@ -26,6 +26,9 @@ class RentalsController < ApplicationController
     @rental = Rental.find_by(id: params[:rental_id])
     @rental.update(:status => "returned")
     @rental.save
+
+    @message = "Thank you for returning #{@rental.movie.title}."
+    redirect_to customer_rentals_path(@rental.customer, :message => @message)
   end
 
 end
