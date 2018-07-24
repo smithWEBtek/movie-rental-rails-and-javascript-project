@@ -1,0 +1,68 @@
+<% if @message %>
+    <p><%= @message %></p>
+<% end %>
+
+<h1>My Rentals</h1>
+<% @checked_out = [] %>
+<% @past_rentals = [] %>
+
+<% @rentals.each do |rental| %>
+  <% if rental.status == "checked out" %>
+    <% @checked_out << rental %>
+  <% elsif rental.status == "returned"%>
+    <% @past_rentals << rental %>
+  <% end %>
+<% end %>
+
+<h3>Currently Checked Out:</h3>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>MPAA Rating</th>
+      <th>Length</th>
+      <th>Lead Actor</th>
+      <th>Return?</th>
+    </tr>
+
+    <% @checked_out.each do |rental| %>
+      <tr>
+        <td><%= link_to rental.movie.title, movie_path(rental.movie.id) %></td>
+        <td><%= rental.movie.rating %></td>
+        <td><%= rental.movie.length %> minutes</td>
+        <td><%= rental.movie.lead_actor %></td>
+        <td>
+          <form method="post" action="/rentals/edit">
+            <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+            <%= tag(:input, :type => "hidden", :name => :customer_id, :value => current_user.id) %>
+            <%= tag(:input, :type => "hidden", :name => :movie_id, :value => rental.movie.id) %>
+            <%= tag(:input, :type => "hidden", :name => :rental_id, :value => rental.id) %>
+            <input type="submit" value="Return Now">
+          </form>
+        </td>
+      </tr>
+    <% end %>
+
+  </table>
+<br></br>
+
+<h3>Past Rentals:</h3>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>MPAA Rating</th>
+    <th>Length</th>
+    <th>Lead Actor</th>
+    <th>Add Quote?</th>
+  </tr>
+
+  <% @past_rentals.each do |rental| %>
+    <tr>
+      <td><%= link_to rental.movie.title, movie_path(rental.movie.id) %></td>
+      <td><%= rental.movie.rating %></td>
+      <td><%= rental.movie.length %> minutes</td>
+      <td><%= rental.movie.lead_actor %></td>
+      <td><%= link_to "Add a Famous Quote", new_movie_famous_quote_path(rental.movie.id) %></td>
+    </tr>
+  <% end %>
+
+</table>

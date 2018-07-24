@@ -2,7 +2,6 @@
 
 <p>Email: <%= @customer.email %></p>
 <p>Age: <%= @customer.age %></p>
-<p><%= link_to "Edit your profile", edit_customer_path(@customer.id) %></p>
 
 <% mpaa_statement = "According the the Motion Picture Association of America (MPAA),
 you are old enough to see movies with a rating of " %>
@@ -12,22 +11,22 @@ you are old enough to see movies with a rating of " %>
 <% eighteen_and_over = "G, PG, PG-13, R, and NC-17." %>
 
 <div style="width:50%">
-<% if @customer.age %>
-  <% if @customer.age < 13 %>
-    <p><%= mpaa_statement + under_thirteen %><p>
-  <% elsif @customer.age <= 17 %>
-    <p><%= mpaa_statement + thirteen_to_seventeen %></p>
+  <% if @customer.age %>
+    <% if @customer.age < 13 %>
+      <p><%= mpaa_statement + under_thirteen %><p>
+    <% elsif @customer.age <= 17 %>
+      <p><%= mpaa_statement + thirteen_to_seventeen %></p>
+    <% else %>
+      <p><%= mpaa_statement + eighteen_and_over %></p>
+    <% end  %>
   <% else %>
-    <p><%= mpaa_statement + eighteen_and_over %></p>
+    <p>The Motion Picture Association of America (MPAA) rates each movie
+      to recommend a certain age threshold for viewers. To learn more
+      about which movies would suit you, be sure to include your age
+      in your profile.</p>
   <% end  %>
-<% else %>
-  <p>The Motion Picture Association of America (MPAA) rates each movie
-    to recommend a certain age threshold for viewers. To learn more
-    about which movies would suit you, be sure to include your age
-    in your profile.</p>
-<% end  %>
 </div>
 
-<h2> Movies I've Rented </h2>
+<h3><%= link_to "Edit your profile", edit_customer_path(@customer.id) %></h3>
 
 <h2> Quotes I've Heard </h2>

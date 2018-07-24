@@ -1,0 +1,13 @@
+<h1>Add a Famous Quote from <%= @movie.title %></h1>
+<%= form_for(@famous_quotes) do |f| %>
+
+  <%= f.label :quote, "Quote:" %> <br>
+  <%= f.text_area_tag :quote %>
+  <br></br>
+
+  <%= f.label :actor, "Actor:" %> <br>
+  <%= f.text_field :actor %>
+  <br></br>
+
+  <%= f.submit %>
+<% end %>

@@ -1,7 +1,13 @@
+<h3>Filter movies:</h3>
+<%= form_tag("/movies", method: "get") do %>
+  <%= select_tag "rating", options_for_select(["G", "PG", "PG-13", "R", "NC-17"]), include_blank: true %>
+  <%= submit_tag "Filter" %>
+<% end %>
+
 <table>
   <tr>
     <th>Title</th>
-    <th>Rating</th>
+    <th>MPAA Rating</th>
     <th>Length</th>
     <th>Lead Actor</th>
   </tr>
