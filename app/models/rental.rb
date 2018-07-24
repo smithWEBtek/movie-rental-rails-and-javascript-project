@@ -3,26 +3,28 @@ class Rental < ApplicationRecord
   belongs_to :customer
 
   def rent_movie
-    if self.user != nil
-      if self.user.tickets < self.attraction.tickets && self.user.height < self.attraction.min_height
-        "Sorry. You do not have enough tickets to ride the #{self.attraction.name}. You are not tall enough to ride the #{self.attraction.name}."
-      elsif self.user.tickets < self.attraction.tickets
-        "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
-      elsif self.user.height < self.attraction.min_height
-        "Sorry. You are not tall enough to ride the #{self.attraction.name}."
+    if self.customer != nil
+      if !old_enough?
+        "Sorry, you are not old enough to watch this movie."
       else
-        new_tickets = self.user.tickets - self.attraction.tickets
-        new_nausea = self.user.nausea + self.attraction.nausea_rating
-        new_happiness = self.user.happiness + self.attraction.happiness_rating
-
-        self.user.update(
-          :tickets => new_tickets,
-          :nausea => new_nausea,
-          :happiness => new_happiness
-        )
-        "Thanks for riding the #{self.attraction.name}!"
+        self.update(:status => "checked out",)
+        "Thanks for renting #{self.movie.title}!"
       end
     end
+  end
+
+  def old_enough?
+    rental_rating = self.movie.rating
+    if rental_rating == "NC-17"
+      required_age = 18
+    elsif rental_rating == "R"
+      required_age = 17
+    elsif rental_rating == "PG-13" || rental_rating == "PG"
+      required_age = 13
+    elsif rental_rating == "G"
+      required_age = 0
+    end
+    required_age < self.customer.age
   end
 
 end
