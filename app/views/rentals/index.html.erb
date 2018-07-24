@@ -60,6 +60,7 @@
       <td><%= rental.movie.rating %></td>
       <td><%= rental.movie.length %> minutes</td>
       <td><%= rental.movie.lead_actor %></td>
+      <td><%= link_to "Add a Famous Quote", new_movie_famous_quote_path(rental.movie.id) %></td>
     </tr>
   <% end %>
 
