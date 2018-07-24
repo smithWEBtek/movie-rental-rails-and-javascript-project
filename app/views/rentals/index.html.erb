@@ -23,12 +23,12 @@
       <th>Lead Actor</th>
     </tr>
 
-    <% @checked_out.each do |movie| %>
+    <% @checked_out.each do |rental| %>
       <tr>
-        <td><%= link_to movie.title, movie_path(movie.id) %></td>
-        <td><%= movie.rating %></td>
-        <td><%= movie.length %> minutes</td>
-        <td><%= movie.lead_actor %></td>
+        <td><%= link_to rental.movie.title, movie_path(rental.movie.id) %></td>
+        <td><%= rental.movie.rating %></td>
+        <td><%= rental.movie.length %> minutes</td>
+        <td><%= rental.movie.lead_actor %></td>
       </tr>
     <% end %>
 
@@ -43,12 +43,12 @@
     <th>Lead Actor</th>
   </tr>
 
-  <% @past_rentals.each do |movie| %>
+  <% @past_rentals.each do |rental| %>
     <tr>
-      <td><%= link_to movie.title, movie_path(movie.id) %></td>
-      <td><%= movie.rating %></td>
-      <td><%= movie.length %> minutes</td>
-      <td><%= movie.lead_actor %></td>
+      <td><%= link_to rental.movie.title, movie_path(rental.movie.id) %></td>
+      <td><%= rental.movie.rating %></td>
+      <td><%= rental.movie.length %> minutes</td>
+      <td><%= rental.movie.lead_actor %></td>
     </tr>
   <% end %>
 
