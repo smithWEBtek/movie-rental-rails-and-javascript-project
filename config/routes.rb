@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :rentals, only: [:index]
   end
 
+  post '/rentals/new', to: 'rentals#new'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
