@@ -1,6 +1,6 @@
 <h3>Filter movies:</h3>
 <%= form_tag("/movies", method: "get") do %>
-  <%= select_tag "MPAA Rating", options_from_collection_for_select(@movies, "id", "rating"), include_blank: true %>
+  <%= select_tag "rating", options_for_select(["G", "PG", "PG-13", "R", "NC-17"]), include_blank: true %>
   <%= submit_tag "Filter" %>
 <% end %>
 
