@@ -21,6 +21,7 @@
       <th>MPAA Rating</th>
       <th>Length</th>
       <th>Lead Actor</th>
+      <th>Return?</th>
     </tr>
 
     <% @checked_out.each do |rental| %>
@@ -29,6 +30,14 @@
         <td><%= rental.movie.rating %></td>
         <td><%= rental.movie.length %> minutes</td>
         <td><%= rental.movie.lead_actor %></td>
+        <td>
+          <form method="post" action="/rentals/edit">
+            <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+            <%= tag(:input, :type => "hidden", :name => :customer_id, :value => current_user.id) %>
+            <%= tag(:input, :type => "hidden", :name => :movie_id, :value => rental.movie.id) %>
+            <input type="submit" value="Return Now">
+          </form>
+        </td>
       </tr>
     <% end %>
 
