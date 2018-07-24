@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   end
 
   resources :movies, only: [:show] do
-    resources :famous_quotes, only: [:index, :new]
+    resources :famous_quotes, only: [:new]
   end
-
+  
   post '/rentals/new', to: 'rentals#new'
   post '/rentals/edit', to: 'rentals#edit'
 
