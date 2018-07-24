@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   post '/rentals/new', to: 'rentals#new'
+  post '/rentals/edit', to: 'rentals#edit'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
