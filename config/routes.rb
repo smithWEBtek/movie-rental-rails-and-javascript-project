@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :movies
   resources :customers
 
+  resources :customers, only: [:show] do
+    resources :rentals, only: [:index]
+  end
+
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/auth/facebook/callback' => 'sessions#create'
@@ -12,6 +17,6 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   get '/signup' => 'customers#new'
-  post '/signup' => 'customerss#create'
+  post '/signup' => 'customers#create'
 
 end
