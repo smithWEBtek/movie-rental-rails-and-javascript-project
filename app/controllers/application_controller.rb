@@ -9,12 +9,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def logged_in?
-    !!current_user
-  end
-
   def current_user
     @current_user ||= Customer.find(session[:customer_id]) if session[:customer_id]
   end
 
+  def logged_in?
+    !!current_user
+  end
 end
