@@ -19,7 +19,7 @@ class RentalsController < ApplicationController
           :movie_id => params[:movie_id]
         )
     @message = @rental.rent_movie
-    redirect_to customer_rentals_path(@rental.customer, :message => @message)
+    redirect_to customer_rentals_path(@rental.customer), :notice => @message
   end
 
   def edit
