@@ -15,7 +15,7 @@ class FamousQuotesController < ApplicationController
 
     if @famous_quote.save
       @message = "Thank you for adding a quote to #{@famous_quote.movie.title}"
-      redirect_to movie_path(@famous_quote.movie, :message => @message)
+      redirect_to movie_path(@famous_quote.movie), :notice => @message
     else
       render :new
     end
