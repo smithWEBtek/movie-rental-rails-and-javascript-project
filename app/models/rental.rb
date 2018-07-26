@@ -27,4 +27,12 @@ class Rental < ApplicationRecord
     required_age < self.customer.age
   end
 
+  def self.checked_out
+     self.where("status = 'checked out'")
+  end
+
+  def self.past_rentals
+    self.where("status = 'returned'")
+  end
+
 end

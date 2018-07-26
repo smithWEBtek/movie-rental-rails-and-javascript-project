@@ -6,7 +6,8 @@ class RentalsController < ApplicationController
       if @customer.nil?
         redirect_to "/"
       else
-        @rentals = @customer.rentals
+        @checked_out = @customer.rentals.checked_out
+        @past_rentals = @customer.rentals.past_rentals
       end
     else
       redirect_to "/"
