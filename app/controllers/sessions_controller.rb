@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     if request.env['omniauth.auth']
-      @customer = Customer.find_or_create_by(email: auth['email']) do |c|
+      @customer = Customer.find_or_create_by(email: auth['info']['email']) do |c|
         c.name = auth['info']['name']
         c.email = auth['info']['email']
         c.password = "0"
