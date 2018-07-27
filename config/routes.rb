@@ -13,13 +13,13 @@ Rails.application.routes.draw do
   get '/signup' => 'customers#new'
   post '/signup' => 'customers#create'
 
-  post '/rentals/new', to: 'rentals#new'
-  post '/rentals/edit', to: 'rentals#edit'
+  post '/rentals', to: 'rentals#create'
+  get '/rentals/:id', to: 'rentals#update'
 
   resources :movies, only: [:index]
   resources :movies, only: [:show] do
     get '/famous_quotes/new', to: 'famous_quotes#new'
-    post '/famous_quotes/new', to: 'famous_quotes#create'
+    post '/famous_quotes', to: 'famous_quotes#create'
   end
 
 
