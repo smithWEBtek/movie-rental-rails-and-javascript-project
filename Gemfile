@@ -6,6 +6,8 @@ ruby '2.3.3'
 gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'jquery-rails'
+gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'pry'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
