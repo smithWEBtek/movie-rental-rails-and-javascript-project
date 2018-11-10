@@ -11,7 +11,7 @@
   <p>"<em><%= q.quote %></em>" -<%= q.actor %></p> <br />
 <% end  %>
 
-<form method="post" action="/rentals/new">
+<form method="post" action="/rentals">
   <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
   <%= tag(:input, :type => "hidden", :name => :customer_id, :value => current_user.id) %>
   <%= tag(:input, :type => "hidden", :name => :movie_id, :value => @movie.id) %>

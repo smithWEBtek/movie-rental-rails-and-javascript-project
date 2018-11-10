@@ -6,7 +6,13 @@ class FamousQuotesController < ApplicationController
   end
 
   def create
-    @famous_quote = Famous_quote.new(famous_quote_params)
+    @movie = Movie.find_by(id: params[:movie_id])
+    @famous_quote = FamousQuote.create(
+      :quote => famous_quote_params[:quote],
+      :actor => famous_quote_params[:actor],
+      :movie_id => params[:movie_id]
+    )
+
     if @famous_quote.save
       @message = "Thank you for adding a quote to #{@famous_quote.movie.title}"
       redirect_to movie_path(@famous_quote.movie), :notice => @message

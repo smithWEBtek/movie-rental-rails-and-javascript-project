@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:new, :create]
+  before_action :no_url_hacking, only: [:show, :edit, :update]
 
   def show
     @customer = Customer.find(params[:id])
@@ -33,15 +34,18 @@ class CustomersController < ApplicationController
     end
   end
 
+  private
+
+  def customer_params
+    params.require(:customer).permit(:name, :age, :email, :password)
+  end
 
   def require_login
     redirect_to '/' unless logged_in?
   end
 
-  private
-
-  def customer_params
-    params.require(:customer).permit(:name, :age, :email, :password)
+  def no_url_hacking
+    redirect_to '/' unless current_user.id.to_s == params[:id]
   end
 
 end

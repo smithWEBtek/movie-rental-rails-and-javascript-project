@@ -15,15 +15,20 @@ class Rental < ApplicationRecord
 
   def old_enough?
     rental_rating = self.movie.rating
-    if rental_rating == "NC-17"
+    
+    case rental_rating
+    when "NC-17"
       required_age = 18
-    elsif rental_rating == "R"
+    when "R"
       required_age = 17
-    elsif rental_rating == "PG-13" || rental_rating == "PG"
+    when "PG-13"
       required_age = 13
-    elsif rental_rating == "G"
+    when "PG"
+      required_age = 13
+    else
       required_age = 0
     end
+
     required_age < self.customer.age
   end
 
