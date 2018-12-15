@@ -45,7 +45,8 @@ class CustomersController < ApplicationController
   end
 
   def no_url_hacking
-    redirect_to '/' unless current_user.id.to_s == params[:id]
+    # redirect_to '/' unless current_user.id.to_s == params[:id]
+    redirect_to '/' unless current_user
   end
 
 end
