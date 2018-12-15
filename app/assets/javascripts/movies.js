@@ -38,10 +38,12 @@ class Movie {
 
 Movie.prototype.movieHTML = function () {
 	return (`
-    <div>
-      <p>Id: ${this.id}</p>
-      <p>Title: ${this.title}</p>
-			<button class='dog-details'>More Info</button>
+		<hr>
+		<div>
+	      <p>Id: ${this.id}</p>
+  	    <p>Title: ${this.title}</p>
+				<button class='dog-details'>More Info</button>
 		</div>
+		<hr>
     `)
 }
