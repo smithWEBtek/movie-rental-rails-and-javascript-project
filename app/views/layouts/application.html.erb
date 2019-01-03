@@ -4,8 +4,8 @@
     <title>MovieRentalRailsProject</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
     <link href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css" rel="stylesheet">
   </head>
 
@@ -17,7 +17,7 @@
 
         <a class="navbar-brand" href="/"/>Home</a>
         <% if current_user %>
-          <a class="navbar-brand" href="/movies"/>All Movies</a>
+          <a class="navbar-brand" href="/movies" id='all-movies'>All Movies</a>
           <a class="navbar-brand" href="/customers/<%=current_user.id%>"/>My Profile</a>
           <a class="navbar-brand" href="/customers/<%=current_user.id%>/rentals"/>My Rentals</a>
           <a class="navbar-brand" href="/logout"/>Log Out</a>
@@ -36,6 +36,7 @@
 
     <!-- content -->
     <div class="container"  role="main">
+    <div id="all-movies-container">ALL MOVIES LOADS HERE ... </div>
       <%= yield %>
     </div>
   </body>
